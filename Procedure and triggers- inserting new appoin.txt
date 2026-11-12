@@ -1,0 +1,35 @@
+#Procedure 1 - inserting new appointment data 
+
+
+
+CREATE PROCEDURE NewProc(
+    IN p_AppointmentID INT,
+    IN p_AppointmentDate DATETIME,
+    IN p_Location VARCHAR(50),
+    IN p_AppointmentStatus ENUM('Pending','Completed','Cancelled'),
+    IN p_AppointmentTime TIME,
+    IN p_Fk_PatientID VARCHAR(45),
+    IN p_Fk_ClinicianID VARCHAR(45)
+)
+    INSERT INTO appointment_table (
+        AppointmentID,
+        AppointmentDate,
+        Location,
+        AppointmentStatus,
+        AppointmentTime,
+        Fk_PatientID,
+        Fk_ClinicianID
+    )
+    VALUES (
+        p_AppointmentID,
+        p_AppointmentDate,
+        p_Location,
+        p_AppointmentStatus,
+        p_AppointmentTime,
+        p_Fk_PatientID,
+        p_Fk_ClinicianID
+    );
+
+This is how to trigger it :
+
+call crownfieldeyehospital.NewProc(120, '20271111', '', '', '', '', '');
